@@ -1,0 +1,22 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "fcanas",
+    "longName": "Which Side?",
+    "projectType": "native",
+    "resources": {
+        "media": []
+    },
+    "sdkVersion": "3",
+    "shortName": "Which Side",
+    "targetPlatforms": [
+        "basalt"
+    ],
+    "uuid": "0e8e0aed-bf61-4370-ab01-a9fc3c2b8d72",
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": false
+    }
+}
