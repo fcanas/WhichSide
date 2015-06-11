@@ -7,7 +7,18 @@
     "longName": "Which Side?",
     "projectType": "native",
     "resources": {
-        "media": []
+        "media": [
+            {
+                "file": "images/R.png",
+                "name": "SMALL_RIGHT_IMG",
+                "type": "png"
+            },
+            {
+                "file": "images/L.png",
+                "name": "SMALL_LEFT_IMG",
+                "type": "png"
+            }
+        ]
     },
     "sdkVersion": "3",
     "shortName": "Which Side",
