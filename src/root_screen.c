@@ -87,10 +87,10 @@ static void window_load(Window *window) {
   text_layer_set_text_alignment(status_text_layer, GTextAlignmentCenter);
   layer_add_child(window_layer, text_layer_get_layer(status_text_layer));
   
-  GFont time_font = fonts_get_system_font(FONT_KEY_ROBOTO_CONDENSED_21);
+  GFont time_font = fonts_get_system_font(FONT_KEY_BITHAM_42_MEDIUM_NUMBERS);
   
   // Time Label
-  time_text_layer = text_layer_create((GRect) { .origin = { 0, 80 }, .size = { bounds.size.w - 30, 30 } });
+  time_text_layer = text_layer_create((GRect) { .origin = { 0, 80 }, .size = { bounds.size.w - 30, 60 } });
   text_layer_set_background_color(time_text_layer, GColorClear);
   text_layer_set_text(time_text_layer, "");
   text_layer_set_font(time_text_layer, time_font);
