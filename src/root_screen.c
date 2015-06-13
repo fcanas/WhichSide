@@ -101,7 +101,7 @@ static void window_load(Window *window) {
   action_bar_layer = action_bar_layer_create();
   action_bar_layer_add_to_window(action_bar_layer, window);
   action_bar_layer_set_click_config_provider(action_bar_layer, click_config_provider);
-  action_bar_layer_set_background_color(action_bar_layer, GColorIslamicGreen);
+  action_bar_layer_set_background_color(action_bar_layer, GColorVividViolet);
   
   action_bar_layer_set_icon_animated(action_bar_layer, BUTTON_ID_UP, gbitmap_create_with_resource(RESOURCE_ID_SMALL_LEFT_IMG), true);
   action_bar_layer_set_icon_animated(action_bar_layer, BUTTON_ID_DOWN, gbitmap_create_with_resource (RESOURCE_ID_SMALL_RIGHT_IMG), true);
