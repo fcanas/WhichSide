@@ -5,6 +5,8 @@ static TextLayer *status_text_layer;
 static TextLayer *time_text_layer;
 static ActionBarLayer *action_bar_layer;
 
+static AppTimer *refresh_timer;
+
 #define LAST_SIDE_STRING_KEY 10
 #define LAST_TIME_KEY 20
 
@@ -32,6 +34,7 @@ static void log_side(const char *side) {
   persist_write_string(LAST_SIDE_STRING_KEY, side);
   strcpy(side_string, side);
   log_now();
+  app_timer_reschedule(refresh_timer, 60 * 1000);
   update_ui();
 }
 
@@ -71,6 +74,12 @@ static void update_ui() {
   text_layer_set_text(status_text_layer, side_string);
   text_layer_set_text(time_text_layer, time_string);
 }
+
+static void timer_callback(void *data) {
+  update_ui();
+}
+
+
   
 static void window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
@@ -106,6 +115,8 @@ static void window_load(Window *window) {
   action_bar_layer_set_icon_animated(action_bar_layer, BUTTON_ID_UP, gbitmap_create_with_resource(RESOURCE_ID_SMALL_LEFT_IMG), true);
   action_bar_layer_set_icon_animated(action_bar_layer, BUTTON_ID_DOWN, gbitmap_create_with_resource (RESOURCE_ID_SMALL_RIGHT_IMG), true);
   
+  refresh_timer = app_timer_register(60*1000, &timer_callback, NULL);
+  
   load_state();
   update_ui();
 }
@@ -113,6 +124,7 @@ static void window_load(Window *window) {
 static void window_unload(Window *window) {
   text_layer_destroy(status_text_layer);
   action_bar_layer_destroy(action_bar_layer);
+  app_timer_cancel(refresh_timer);
 }
 
 WindowHandlers RootScreen = {
