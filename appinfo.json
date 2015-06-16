@@ -9,13 +9,13 @@
     "resources": {
         "media": [
             {
-                "file": "images/L.png",
-                "name": "SMALL_LEFT_IMG",
+                "file": "images/R.png",
+                "name": "SMALL_RIGHT_IMG",
                 "type": "png"
             },
             {
-                "file": "images/R.png",
-                "name": "SMALL_RIGHT_IMG",
+                "file": "images/L.png",
+                "name": "SMALL_LEFT_IMG",
                 "type": "png"
             }
         ]

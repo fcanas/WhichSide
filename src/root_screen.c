@@ -77,9 +77,8 @@ static void update_ui() {
 
 static void timer_callback(void *data) {
   update_ui();
+  app_timer_register(60*1000, &timer_callback, NULL);
 }
-
-
   
 static void window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
