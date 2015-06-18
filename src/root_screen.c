@@ -1,12 +1,15 @@
 #include <pebble.h>
 #include "root_screen.h"
 #include "event_store.h"
-  
+
 static TextLayer *status_text_layer;
 static TextLayer *time_text_layer;
 static ActionBarLayer *action_bar_layer;
 
 static AppTimer *refresh_timer;
+
+const unsigned int SECS_PER_HR  = 60 * 60;
+const unsigned int SECS_PER_MIN = 60;
 
 // static void more_click_handler(ClickRecognizerRef recognizer, void *context) {
 //   text_layer_set_text(status_text_layer, "More");
@@ -17,9 +20,11 @@ static AppTimer *refresh_timer;
 //   text_layer_set_text(time_text_layer, );
 // }
 
+side_event last_event;
+
 static char side_string[20];
 static char time_string[20];
-time_t last_time;
+
 
 static void update_ui();
 
@@ -45,24 +50,19 @@ static void click_config_provider(void *context) {
 
 static void load_state() {
   side_event e = get_last_event();
-  snprintf(side_string, sizeof(side_string), "%c", e.side);
-  last_time = e.time;
 }
-
-const unsigned int SECS_PER_HR  = 60 * 60;
-const unsigned int SECS_PER_MIN = 60;
 
 static void update_ui() {
   load_state();
   time_t now;
   time(&now);
-  int diff = difftime(now, last_time);
-
+  int diff = difftime(now, last_event.time);
   unsigned int hours = diff / SECS_PER_HR;
   diff = diff % SECS_PER_HR;
   unsigned int minutes = diff / SECS_PER_MIN;
 
   snprintf(time_string, sizeof(time_string), "%u:%02u", hours, minutes);
+  snprintf(side_string, sizeof(side_string), "%c", e.side);
 
   text_layer_set_text(status_text_layer, side_string);
   text_layer_set_text(time_text_layer, time_string);
