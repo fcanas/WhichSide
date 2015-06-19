@@ -48,8 +48,8 @@ static void click_config_provider(void *context) {
   window_single_click_subscribe(BUTTON_ID_DOWN, right_click_handler);
 }
 
-static void load_state() {
-  side_event e = get_last_event();
+void load_state() {
+  last_event = get_last_event();
 }
 
 static void update_ui() {
