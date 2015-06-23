@@ -62,7 +62,7 @@ static void update_ui() {
   unsigned int minutes = diff / SECS_PER_MIN;
 
   snprintf(time_string, sizeof(time_string), "%u:%02u", hours, minutes);
-  snprintf(side_string, sizeof(side_string), "%c", e.side);
+  snprintf(side_string, sizeof(side_string), "%c", last_event.side);
 
   text_layer_set_text(status_text_layer, side_string);
   text_layer_set_text(time_text_layer, time_string);
