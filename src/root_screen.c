@@ -48,22 +48,28 @@ static void click_config_provider(void *context) {
   window_single_click_subscribe(BUTTON_ID_DOWN, right_click_handler);
 }
 
-void load_state() {
+void load_last_event_from_store() {
   last_event = get_last_event();
 }
 
-static void update_ui() {
-  load_state();
+static update_date_string() {
   time_t now;
   time(&now);
   int diff = difftime(now, last_event.time);
   unsigned int hours = diff / SECS_PER_HR;
   diff = diff % SECS_PER_HR;
   unsigned int minutes = diff / SECS_PER_MIN;
-
   snprintf(time_string, sizeof(time_string), "%u:%02u", hours, minutes);
-  snprintf(side_string, sizeof(side_string), "%c", last_event.side);
+}
 
+static update_time_string() {
+  snprintf(side_string, sizeof(side_string), "%c", last_event.side);
+}
+
+static void update_ui() {
+  load_last_event_from_store();
+  update_date_string();
+  update_time_string();
   text_layer_set_text(status_text_layer, side_string);
   text_layer_set_text(time_text_layer, time_string);
 }
@@ -109,7 +115,7 @@ static void window_load(Window *window) {
 
   refresh_timer = app_timer_register(60*1000, &timer_callback, NULL);
 
-  load_state();
+  load_last_event_from_store();
   update_ui();
 }
 
