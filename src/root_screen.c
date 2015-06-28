@@ -25,21 +25,20 @@ side_event last_event;
 static char side_string[20];
 static char time_string[20];
 
-
 static void update_ui();
 
-static void log_side_ui(const char *side) {
-  log_side(side[0]);
+static void log_side_ui(const char side) {
+  log_side(side);
   app_timer_reschedule(refresh_timer, 60 * 1000);
   update_ui();
 }
 
 static void left_click_handler(ClickRecognizerRef recognizer, void *context) {
-  log_side_ui("L");
+  log_side_ui('L');
 }
 
 static void right_click_handler(ClickRecognizerRef recognizer, void *context) {
-  log_side_ui("R");
+  log_side_ui('R');
 }
 
 static void click_config_provider(void *context) {
