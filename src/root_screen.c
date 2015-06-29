@@ -11,15 +11,6 @@ static AppTimer *refresh_timer;
 const unsigned int SECS_PER_HR  = 60 * 60;
 const unsigned int SECS_PER_MIN = 60;
 
-// static void more_click_handler(ClickRecognizerRef recognizer, void *context) {
-//   text_layer_set_text(status_text_layer, "More");
-//   time_t currentTime;
-//   time(&time_t);
-//   char[48] timeString;
-//   clock_copy_time_string(timeString, sizeof(timeString));
-//   text_layer_set_text(time_text_layer, );
-// }
-
 side_event last_event;
 
 static char side_string[20];
