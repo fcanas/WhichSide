@@ -70,6 +70,7 @@ static void timer_callback(void *data) {
 }
 
 static void window_load(Window *window) {
+  load_from_disk();
   Layer *window_layer = window_get_root_layer(window);
   GRect bounds = layer_get_bounds(window_layer);
   window_set_background_color(window, GColorVividCerulean);
@@ -113,6 +114,7 @@ static void window_unload(Window *window) {
   text_layer_destroy(status_text_layer);
   action_bar_layer_destroy(action_bar_layer);
   app_timer_cancel(refresh_timer);
+  persist_to_disk();
 }
 
 WindowHandlers RootScreen = {
