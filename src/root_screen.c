@@ -69,6 +69,10 @@ static void timer_callback(void *data) {
   app_timer_register(60*1000, &timer_callback, NULL);
 }
 
+void tap_detected(AccelAxisType axis, int32_t direction) {
+  last_event = undo_last_event();
+}
+
 static void window_load(Window *window) {
   load_from_disk();
   Layer *window_layer = window_get_root_layer(window);
@@ -106,6 +110,8 @@ static void window_load(Window *window) {
 
   refresh_timer = app_timer_register(60*1000, &timer_callback, NULL);
 
+  accel_tap_service_subscribe(&tap_detected);
+
   load_last_event_from_store();
   update_ui();
 }
@@ -115,6 +121,7 @@ static void window_unload(Window *window) {
   action_bar_layer_destroy(action_bar_layer);
   app_timer_cancel(refresh_timer);
   persist_to_disk();
+  accel_tap_service_unsubscribe();
 }
 
 WindowHandlers RootScreen = {
