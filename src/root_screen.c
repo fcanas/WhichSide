@@ -42,7 +42,7 @@ void load_last_event_from_store() {
   last_event = get_last_event();
 }
 
-static update_date_string() {
+void update_date_string() {
   time_t now;
   time(&now);
   int diff = difftime(now, last_event.time);
@@ -52,7 +52,7 @@ static update_date_string() {
   snprintf(time_string, sizeof(time_string), "%u:%02u", hours, minutes);
 }
 
-static update_time_string() {
+void update_time_string() {
   snprintf(side_string, sizeof(side_string), "%c", last_event.side);
 }
 
