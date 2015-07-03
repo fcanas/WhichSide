@@ -9,13 +9,13 @@
     "resources": {
         "media": [
             {
-                "file": "images/Rbw.png",
-                "name": "SMALL_RIGHT_IMG",
+                "file": "images/Lbw.png",
+                "name": "SMALL_LEFT_IMG",
                 "type": "png"
             },
             {
-                "file": "images/Lbw.png",
-                "name": "SMALL_LEFT_IMG",
+                "file": "images/Rbw.png",
+                "name": "SMALL_RIGHT_IMG",
                 "type": "png"
             }
         ]
