@@ -6,6 +6,8 @@ typedef struct {
   time_t time;
 } side_event;
 
+bool has_event();
+
 void persist_to_disk();
 void load_from_disk();
 

@@ -9,31 +9,24 @@
     "resources": {
         "media": [
             {
-                "file": "images/Lbw.png",
-                "name": "SMALL_LEFT_IMG_BW",
-                "type": "png"
-            },
-            {
                 "file": "images/Rbw.png",
-                "name": "RIGHT_BW",
-                "type": "png"
-            },
-            {
-                "file": "images/R.png",
                 "name": "SMALL_RIGHT_IMG",
                 "type": "png"
             },
             {
-                "file": "images/L.png",
+                "file": "images/Lbw.png",
                 "name": "SMALL_LEFT_IMG",
                 "type": "png"
             }
         ]
     },
-    "sdkVersion": "2",
+    "sdkVersion": "3",
     "shortName": "Which Side",
+    "targetPlatforms": [
+        "aplite",
+        "basalt"
+    ],
     "uuid": "0e8e0aed-bf61-4370-ab01-a9fc3c2b8d72",
-    "versionCode": 1,
     "versionLabel": "1.0",
     "watchapp": {
         "watchface": false

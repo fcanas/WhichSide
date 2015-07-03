@@ -57,7 +57,13 @@ void update_time_string() {
 }
 
 static void update_ui() {
+  if (!has_event()) {
+    text_layer_set_text(status_text_layer, "L/R?");
+    text_layer_set_text(time_text_layer, "--");
+    return;
+  }
   load_last_event_from_store();
+  
   update_date_string();
   update_time_string();
   text_layer_set_text(status_text_layer, side_string);
@@ -111,14 +117,8 @@ static void window_load(Window *window) {
   
 #endif
 
-  
-#ifdef PBL_COLOR
   action_bar_layer_set_icon(action_bar_layer, BUTTON_ID_UP, gbitmap_create_with_resource(RESOURCE_ID_SMALL_LEFT_IMG));
   action_bar_layer_set_icon(action_bar_layer, BUTTON_ID_DOWN, gbitmap_create_with_resource (RESOURCE_ID_SMALL_RIGHT_IMG));
-#elif PBL_BW
-  action_bar_layer_set_icon(action_bar_layer, BUTTON_ID_UP, gbitmap_create_with_resource(RESOURCE_ID_SMALL_LEFT_IMG_BW));
-  action_bar_layer_set_icon(action_bar_layer, BUTTON_ID_DOWN, gbitmap_create_with_resource (RESOURCE_ID_SMALL_RIGHT_IMG_BW));
-#endif  
   
   refresh_timer = app_timer_register(60*1000, &timer_callback, NULL);
 

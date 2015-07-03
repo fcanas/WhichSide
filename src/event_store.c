@@ -14,6 +14,10 @@ void log_side(char side) {
   set_event(e);
 }
 
+bool has_event() {
+  return persist_exists(LAST_EVENT_KEY);
+}
+
 void set_event(side_event e) {
   persist_to_disk();
   latest_logged_event = e;
