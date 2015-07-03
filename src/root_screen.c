@@ -73,7 +73,12 @@ static void window_load(Window *window) {
   load_from_disk();
   Layer *window_layer = window_get_root_layer(window);
   GRect bounds = layer_get_bounds(window_layer);
+  
+#ifdef PBL_COLOR
   window_set_background_color(window, GColorVividCerulean);
+#elif PBL_BW
+  
+#endif  
 
   GFont side_font = fonts_get_system_font(FONT_KEY_BITHAM_42_BOLD);
 
@@ -99,11 +104,22 @@ static void window_load(Window *window) {
   action_bar_layer = action_bar_layer_create();
   action_bar_layer_add_to_window(action_bar_layer, window);
   action_bar_layer_set_click_config_provider(action_bar_layer, click_config_provider);
+  
+#ifdef PBL_COLOR
   action_bar_layer_set_background_color(action_bar_layer, GColorVividViolet);
+#elif PBL_BW
+  
+#endif
 
-  action_bar_layer_set_icon_animated(action_bar_layer, BUTTON_ID_UP, gbitmap_create_with_resource(RESOURCE_ID_SMALL_LEFT_IMG), true);
-  action_bar_layer_set_icon_animated(action_bar_layer, BUTTON_ID_DOWN, gbitmap_create_with_resource (RESOURCE_ID_SMALL_RIGHT_IMG), true);
-
+  
+#ifdef PBL_COLOR
+  action_bar_layer_set_icon(action_bar_layer, BUTTON_ID_UP, gbitmap_create_with_resource(RESOURCE_ID_SMALL_LEFT_IMG));
+  action_bar_layer_set_icon(action_bar_layer, BUTTON_ID_DOWN, gbitmap_create_with_resource (RESOURCE_ID_SMALL_RIGHT_IMG));
+#elif PBL_BW
+  action_bar_layer_set_icon(action_bar_layer, BUTTON_ID_UP, gbitmap_create_with_resource(RESOURCE_ID_SMALL_LEFT_IMG_BW));
+  action_bar_layer_set_icon(action_bar_layer, BUTTON_ID_DOWN, gbitmap_create_with_resource (RESOURCE_ID_SMALL_RIGHT_IMG_BW));
+#endif  
+  
   refresh_timer = app_timer_register(60*1000, &timer_callback, NULL);
 
   load_last_event_from_store();
