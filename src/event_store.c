@@ -34,8 +34,3 @@ void load_from_disk() {
 side_event get_last_event() {
   return latest_logged_event;
 }
-
-side_event undo_last_event() {
-  load_from_disk();
-  return latest_logged_event;
-}
