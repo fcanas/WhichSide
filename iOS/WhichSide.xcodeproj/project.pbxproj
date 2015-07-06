@@ -13,6 +13,8 @@
 		E7DF4B1A1B4A160000766815 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7DF4B191B4A160000766815 /* Images.xcassets */; };
 		E7DF4B1D1B4A160000766815 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7DF4B1B1B4A160000766815 /* LaunchScreen.xib */; };
 		E7DF4B291B4A160000766815 /* WhichSideTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DF4B281B4A160000766815 /* WhichSideTests.swift */; };
+		E7DF4B331B4A1F0D00766815 /* RowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7DF4B321B4A1F0D00766815 /* RowCell.xib */; };
+		E7DF4B351B4A218E00766815 /* IntervalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7DF4B341B4A218E00766815 /* IntervalCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		E7DF4B221B4A160000766815 /* WhichSideTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhichSideTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7DF4B271B4A160000766815 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7DF4B281B4A160000766815 /* WhichSideTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhichSideTests.swift; sourceTree = "<group>"; };
+		E7DF4B321B4A1F0D00766815 /* RowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RowCell.xib; sourceTree = "<group>"; };
+		E7DF4B341B4A218E00766815 /* IntervalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntervalCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,8 @@
 				E7DF4B191B4A160000766815 /* Images.xcassets */,
 				E7DF4B1B1B4A160000766815 /* LaunchScreen.xib */,
 				E7DF4B101B4A160000766815 /* Supporting Files */,
+				E7DF4B321B4A1F0D00766815 /* RowCell.xib */,
+				E7DF4B341B4A218E00766815 /* IntervalCell.xib */,
 			);
 			path = WhichSide;
 			sourceTree = "<group>";
@@ -192,6 +198,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7DF4B331B4A1F0D00766815 /* RowCell.xib in Resources */,
+				E7DF4B351B4A218E00766815 /* IntervalCell.xib in Resources */,
 				E7DF4B181B4A160000766815 /* Main.storyboard in Resources */,
 				E7DF4B1D1B4A160000766815 /* LaunchScreen.xib in Resources */,
 				E7DF4B1A1B4A160000766815 /* Images.xcassets in Resources */,
@@ -411,6 +419,7 @@
 				E7DF4B2E1B4A160000766815 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E7DF4B2F1B4A160000766815 /* Build configuration list for PBXNativeTarget "WhichSideTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +428,7 @@
 				E7DF4B311B4A160000766815 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
