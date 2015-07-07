@@ -1,0 +1,9 @@
+//
+//  Config.xcconfig
+//  WhichSide
+//
+//  Created by Fabian Canas on 7/6/15.
+//  Copyright (c) 2015 Fabián Cañas. All rights reserved.
+//
+#include "Keys.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) PARSE_APPLICATION_ID=@\"$(PARSE_APPLICATION_ID)\" PARSE_CLIENT_KEY=@\"$(PARSE_CLIENT_KEY)\"
