@@ -8,6 +8,8 @@
 
 import UIKit
 
+let IntervalCellIdentifier = "IntervalCell"
+
 class ViewController: UIViewController, UITableViewDataSource {
     @IBOutlet var tableView :UITableView!
     @IBOutlet var headerView :UIView!
@@ -15,8 +17,8 @@ class ViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.contentInset = UIEdgeInsets(top: 150, left: 0, bottom: 0, right: 0)
-        tableView.registerNib(UINib(nibName: "RowCell", bundle: nil), forCellReuseIdentifier: "EventCell")
-        tableView.registerNib(UINib(nibName: "IntervalCell", bundle: nil), forCellReuseIdentifier: "IntervalCell")
+        tableView.registerNib(UINib(nibName: EventCellIdentifier, bundle: nil), forCellReuseIdentifier: EventCellIdentifier)
+        tableView.registerNib(UINib(nibName: IntervalCellIdentifier, bundle: nil), forCellReuseIdentifier: IntervalCellIdentifier)
         
         tableView.estimatedRowHeight = 89
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -29,9 +31,9 @@ class ViewController: UIViewController, UITableViewDataSource {
         let cell :UITableViewCell
         
         if (indexPath.row % 2) == 1 {
-            cell = tableView.dequeueReusableCellWithIdentifier("EventCell") as! UITableViewCell
+            cell = tableView.dequeueReusableCellWithIdentifier(EventCellIdentifier) as! EventCell
         } else {
-            cell = tableView.dequeueReusableCellWithIdentifier("IntervalCell") as! UITableViewCell
+            cell = tableView.dequeueReusableCellWithIdentifier(IntervalCellIdentifier) as! UITableViewCell
             cell.backgroundColor = .lightGrayColor()
         }
         

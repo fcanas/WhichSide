@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E789F91A1B4B4EFF00D72341 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E789F9191B4B4EFF00D72341 /* EventCell.swift */; };
 		E7DF4B131B4A160000766815 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DF4B121B4A160000766815 /* AppDelegate.swift */; };
 		E7DF4B151B4A160000766815 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DF4B141B4A160000766815 /* ViewController.swift */; };
 		E7DF4B181B4A160000766815 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7DF4B161B4A160000766815 /* Main.storyboard */; };
 		E7DF4B1A1B4A160000766815 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7DF4B191B4A160000766815 /* Images.xcassets */; };
 		E7DF4B1D1B4A160000766815 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7DF4B1B1B4A160000766815 /* LaunchScreen.xib */; };
 		E7DF4B291B4A160000766815 /* WhichSideTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DF4B281B4A160000766815 /* WhichSideTests.swift */; };
-		E7DF4B331B4A1F0D00766815 /* RowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7DF4B321B4A1F0D00766815 /* RowCell.xib */; };
+		E7DF4B331B4A1F0D00766815 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7DF4B321B4A1F0D00766815 /* EventCell.xib */; };
 		E7DF4B351B4A218E00766815 /* IntervalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7DF4B341B4A218E00766815 /* IntervalCell.xib */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E789F9191B4B4EFF00D72341 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		E7DF4B0D1B4A160000766815 /* WhichSide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhichSide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7DF4B111B4A160000766815 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7DF4B121B4A160000766815 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -38,7 +40,7 @@
 		E7DF4B221B4A160000766815 /* WhichSideTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhichSideTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7DF4B271B4A160000766815 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7DF4B281B4A160000766815 /* WhichSideTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhichSideTests.swift; sourceTree = "<group>"; };
-		E7DF4B321B4A1F0D00766815 /* RowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RowCell.xib; sourceTree = "<group>"; };
+		E7DF4B321B4A1F0D00766815 /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		E7DF4B341B4A218E00766815 /* IntervalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntervalCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,8 +89,9 @@
 				E7DF4B191B4A160000766815 /* Images.xcassets */,
 				E7DF4B1B1B4A160000766815 /* LaunchScreen.xib */,
 				E7DF4B101B4A160000766815 /* Supporting Files */,
-				E7DF4B321B4A1F0D00766815 /* RowCell.xib */,
+				E7DF4B321B4A1F0D00766815 /* EventCell.xib */,
 				E7DF4B341B4A218E00766815 /* IntervalCell.xib */,
+				E789F9191B4B4EFF00D72341 /* EventCell.swift */,
 			);
 			path = WhichSide;
 			sourceTree = "<group>";
@@ -198,7 +201,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7DF4B331B4A1F0D00766815 /* RowCell.xib in Resources */,
+				E7DF4B331B4A1F0D00766815 /* EventCell.xib in Resources */,
 				E7DF4B351B4A218E00766815 /* IntervalCell.xib in Resources */,
 				E7DF4B181B4A160000766815 /* Main.storyboard in Resources */,
 				E7DF4B1D1B4A160000766815 /* LaunchScreen.xib in Resources */,
@@ -221,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7DF4B151B4A160000766815 /* ViewController.swift in Sources */,
+				E789F91A1B4B4EFF00D72341 /* EventCell.swift in Sources */,
 				E7DF4B131B4A160000766815 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
