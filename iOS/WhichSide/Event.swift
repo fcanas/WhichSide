@@ -45,8 +45,9 @@ protocol Model {
     func apply(obj :PFObject)
 }
 
+// TODO: make this composable by creating typed PF queries
 func all<T :Model>( callback: ([T]) -> Void ) { // TODO: Make this a method with Swift 2.0?
-    PFQuery(className: T.className()).findObjectsInBackgroundWithBlock { (results, error) -> Void in
+    PFQuery(className: T.className()).addDescendingOrder("timestamp").findObjectsInBackgroundWithBlock { (results, error) -> Void in
         if let results = results {
             callback(reduce(results, Array<T>()) { (var e, obj) in
                 if let pObj = obj as? PFObject, t = T(model: pObj) {

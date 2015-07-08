@@ -10,11 +10,18 @@ import UIKit
 
 let IntervalCellIdentifier = "IntervalCell"
 
-let dateFormatter = NSDateFormatter()
+
+
 
 class ViewController: UIViewController, UITableViewDataSource {
     @IBOutlet var tableView :UITableView!
     @IBOutlet var headerView :UIView!
+    
+    lazy var dateFormatter :NSDateFormatter = {
+        let f = NSDateFormatter()
+        f.timeStyle = NSDateFormatterStyle.ShortStyle
+        return f
+    }()
     
     var events = Array<Event>()
     
