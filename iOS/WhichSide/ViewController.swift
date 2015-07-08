@@ -10,9 +10,13 @@ import UIKit
 
 let IntervalCellIdentifier = "IntervalCell"
 
+let dateFormatter = NSDateFormatter()
+
 class ViewController: UIViewController, UITableViewDataSource {
     @IBOutlet var tableView :UITableView!
     @IBOutlet var headerView :UIView!
+    
+    var events = Array<Event>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +26,11 @@ class ViewController: UIViewController, UITableViewDataSource {
         
         tableView.estimatedRowHeight = 89
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        all { (e :[Event]) -> Void in
+            self.events = e
+            self.tableView.reloadData()
+        }
     }
     
     // MARK: Table View Data Source
@@ -31,7 +40,11 @@ class ViewController: UIViewController, UITableViewDataSource {
         let cell :UITableViewCell
         
         if (indexPath.row % 2) == 1 {
-            cell = tableView.dequeueReusableCellWithIdentifier(EventCellIdentifier) as! EventCell
+            let e = tableView.dequeueReusableCellWithIdentifier(EventCellIdentifier) as! EventCell
+            let event = events[indexPath.row / 2]
+            e.categoryLabel?.text = event.side.rawValue
+            e.timeLabel?.text = dateFormatter.stringFromDate(event.timestamp)
+            cell = e
         } else {
             cell = tableView.dequeueReusableCellWithIdentifier(IntervalCellIdentifier) as! UITableViewCell
             cell.backgroundColor = .lightGrayColor()
@@ -41,6 +54,23 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return count(events) * 2
+    }
+    
+    func add(side: Side) {
+        let e = Event(timestamp: NSDate(), side: side)
+        save(e)
+        tableView.beginUpdates()
+        events = [e] + events
+        tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0), NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Top)
+        tableView.endUpdates()
+    }
+    
+    @IBAction func logLeft(sender :AnyObject) {
+        add(.L)
+    }
+    
+    @IBAction func logRight(sender :AnyObject) {
+        add(.R)
     }
 }
