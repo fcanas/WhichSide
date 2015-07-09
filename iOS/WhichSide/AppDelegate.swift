@@ -19,6 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.enableLocalDatastore()
         Parse.setApplicationId(ParseAppID, clientKey: ParseAppKey)
         
+        PFAnonymousUtils.logInWithBlock { (user, error) -> Void in
+            map (user) { PFACL.setDefaultACL(PFACL(user: $0), withAccessForCurrentUser: true) }
+        }
+        
         return true
     }
     
