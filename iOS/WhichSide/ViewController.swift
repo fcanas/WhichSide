@@ -10,9 +10,6 @@ import UIKit
 
 let IntervalCellIdentifier = "IntervalCell"
 
-
-
-
 class ViewController: UIViewController, UITableViewDataSource {
     @IBOutlet var tableView :UITableView!
     @IBOutlet var headerView :UIView!
@@ -21,7 +18,15 @@ class ViewController: UIViewController, UITableViewDataSource {
         let f = NSDateFormatter()
         f.timeStyle = NSDateFormatterStyle.ShortStyle
         return f
-    }()
+        }()
+    
+    lazy var timeFormatter :NSDateComponentsFormatter = {
+        let f = NSDateComponentsFormatter()
+        f.unitsStyle = NSDateComponentsFormatterUnitsStyle.Positional
+        f.allowedUnits = .CalendarUnitHour | .CalendarUnitMinute | .CalendarUnitSecond
+        f.zeroFormattingBehavior = .Pad
+        return f
+        }()
     
     var events = Array<Event>()
     
@@ -53,8 +58,17 @@ class ViewController: UIViewController, UITableViewDataSource {
             e.timeLabel?.text = dateFormatter.stringFromDate(event.timestamp)
             cell = e
         } else {
-            cell = tableView.dequeueReusableCellWithIdentifier(IntervalCellIdentifier) as! UITableViewCell
-            cell.backgroundColor = .lightGrayColor()
+            let i = tableView.dequeueReusableCellWithIdentifier(IntervalCellIdentifier) as! IntervalCell
+            cell = i
+            
+            if indexPath.row == 0 {
+                i.intervalLabel?.text = "hi"
+            } else {
+                let nextEvent = events[(indexPath.row / 2)-1]
+                let priorEvent = events[(indexPath.row / 2)]
+                let interval = nextEvent.timestamp.timeIntervalSinceDate(priorEvent.timestamp)
+                i.intervalLabel?.text = timeFormatter.stringFromTimeInterval(interval)
+            }
         }
         
         return cell
