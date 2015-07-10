@@ -39,7 +39,7 @@ class ViewController: UIViewController, UITableViewDataSource {
         tableView.estimatedRowHeight = 89
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        all { (e :[Event]) -> Void in
+        Query<Event>().descending("timestamp").findInBackground { e in
             self.events = e
             self.tableView.reloadData()
         }

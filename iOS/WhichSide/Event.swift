@@ -35,32 +35,3 @@ extension Event : Model { // TODO: Use mirror types in Swift 2.0 to provide a de
         obj["side"] = side.rawValue
     }
 }
-
-/// Parse Model Methods
-
-protocol Model {
-    static func className() -> String // TODO: Make this a property with Swift 2.0?
-    init?(model :PFObject)
-    
-    func apply(obj :PFObject)
-}
-
-// TODO: make this composable by creating typed PF queries
-func all<T :Model>( callback: ([T]) -> Void ) { // TODO: Make this a method with Swift 2.0?
-    PFQuery(className: T.className()).addDescendingOrder("timestamp").findObjectsInBackgroundWithBlock { (results, error) -> Void in
-        if let results = results {
-            callback(reduce(results, Array<T>()) { (var e, obj) in
-                if let pObj = obj as? PFObject, t = T(model: pObj) {
-                    return e + [t]
-                }
-                return e
-                })
-        }
-    }
-}
-
-func save<T: Model>(model :T) {
-    let obj = PFObject(className: T.className())
-    model.apply(obj)
-    obj.saveInBackgroundWithBlock(nil)
-}
