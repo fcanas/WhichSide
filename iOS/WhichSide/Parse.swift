@@ -18,27 +18,54 @@ protocol Model {
     func apply(obj :PFObject)
 }
 
+enum Constraint {
+    case Ascending(String)
+    case Descending(String)
+    case Exists(String)
+    case DoesNotExist(String)
+}
+
 struct Query<T :Model> {
-    private var query :PFQuery
+    let constraints :[Constraint]
     
     init() {
-        query = PFQuery(className: T.className())
+        constraints = []
     }
     
-    private init(_ query: PFQuery) {
-        self.query = query
+    init(constraints: [Constraint]) {
+        self.constraints = constraints
     }
     
     func ascending(key: String) -> Query<T> {
-        return Query(query.addAscendingOrder(key))
+        constraints + [Constraint.Ascending(key)]
+        return self
     }
     
     func descending(key: String) -> Query<T> {
-        return Query(query.addDescendingOrder(key))
+        return Query<T>(constraints: constraints + [Constraint.Descending(key)])
     }
     
     func findInBackground(callback: ([T]) -> Void) {
-        query.findObjectsInBackgroundWithBlock { (results, error) -> Void in
+        let q = PFQuery(className: T.className())
+        
+        map(constraints) { (constraint: Constraint) -> Void in
+            switch (constraint) {
+            case .Ascending(let key):
+                q.addAscendingOrder(key)
+                break
+            case .Descending(let key):
+                q.addDescendingOrder(key)
+                break
+            case .Exists(let key):
+                q.whereKeyExists(key)
+                break
+            case .DoesNotExist(let key):
+                q.whereKeyDoesNotExist(key)
+                break
+            }
+        }
+        
+        q.findObjectsInBackgroundWithBlock { (results, error) -> Void in
             if let results = results {
                 callback(reduce(results, Array<T>()) { (var e, obj) in
                     if let pObj = obj as? PFObject, t = T(model: pObj) {
