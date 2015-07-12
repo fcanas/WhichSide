@@ -25,6 +25,57 @@ enum Constraint {
     case DoesNotExist(String)
 }
 
+extension Constraint :Equatable {}
+
+func == (lhs: Constraint, rhs: Constraint) -> Bool {
+    switch (lhs) {
+    case .Ascending(let lKey):
+        switch (rhs) {
+        case .Ascending(let rKey):
+            return lKey == rKey
+        case .Descending:
+            return false
+        case .Exists:
+            return false
+        case .DoesNotExist:
+            return false
+        }
+    case .Descending(let lKey):
+        switch (rhs) {
+        case .Ascending:
+            return false
+        case .Descending(let rKey):
+            return lKey == rKey
+        case .Exists:
+            return false
+        case .DoesNotExist:
+            return false
+        }
+    case .Exists(let lKey):
+        switch (rhs) {
+        case .Ascending:
+            return false
+        case .Descending:
+            return false
+        case .Exists(let rKey):
+            return lKey == rKey
+        case .DoesNotExist:
+            return false
+        }
+    case .DoesNotExist(let lKey):
+        switch (rhs) {
+        case .Ascending:
+            return false
+        case .Descending:
+            return false
+        case .Exists:
+            return false
+        case .DoesNotExist(let rKey):
+            return lKey == rKey
+        }
+    }
+}
+
 struct Query<T :Model> {
     let constraints :[Constraint]
     
@@ -76,6 +127,12 @@ struct Query<T :Model> {
             }
         }
     }
+}
+
+extension Query :Equatable {}
+
+func == <T>(lhs: Query<T>, rhs: Query<T>) -> Bool {
+    return lhs.constraints == rhs.constraints
 }
 
 func save<T: Model>(model :T) {
