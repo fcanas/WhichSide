@@ -31,47 +31,31 @@ func == (lhs: Constraint, rhs: Constraint) -> Bool {
     switch (lhs) {
     case .Ascending(let lKey):
         switch (rhs) {
-        case .Ascending(let rKey):
-            return lKey == rKey
-        case .Descending:
-            return false
-        case .Exists:
-            return false
-        case .DoesNotExist:
+        case .Ascending(let rKey) where lKey == rKey:
+            return true
+        default:
             return false
         }
     case .Descending(let lKey):
         switch (rhs) {
-        case .Ascending:
-            return false
-        case .Descending(let rKey):
-            return lKey == rKey
-        case .Exists:
-            return false
-        case .DoesNotExist:
+        case .Descending(let rKey) where lKey == rKey:
+            return true
+        default:
             return false
         }
     case .Exists(let lKey):
         switch (rhs) {
-        case .Ascending:
-            return false
-        case .Descending:
-            return false
-        case .Exists(let rKey):
-            return lKey == rKey
-        case .DoesNotExist:
+        case .Exists(let rKey) where lKey == rKey:
+            return true
+        default:
             return false
         }
     case .DoesNotExist(let lKey):
         switch (rhs) {
-        case .Ascending:
+        case .DoesNotExist(let rKey) where lKey == rKey:
+            return true
+        default:
             return false
-        case .Descending:
-            return false
-        case .Exists:
-            return false
-        case .DoesNotExist(let rKey):
-            return lKey == rKey
         }
     }
 }
